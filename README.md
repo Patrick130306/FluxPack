@@ -5,7 +5,7 @@
 **轻量压缩包管理器 — 压/解/破/搜/管，一体搞定**
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://python.org)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)](https://github.com)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-brightgreen)](https://github.com)
 [![Tests](https://img.shields.io/badge/Tests-73%20passed-brightgreen)](tests/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
@@ -106,10 +106,10 @@ checksum
 
 ```bash
 # 下载最新版
-https://github.com/你的用户名/fluxpack/releases
+https://github.com/Patrick130306/fluxpack/releases
 
 # 或从源码运行
-git clone https://github.com/你的用户名/fluxpack.git
+git clone https://github.com/Patrick130306/fluxpack.git
 cd fluxpack
 pip install -r requirements.txt
 python run_launcher.py gui
@@ -124,7 +124,7 @@ FluxPack.exe ext-register
 ### Linux / macOS
 
 ```bash
-git clone https://github.com/你的用户名/fluxpack.git
+git clone https://github.com/Patrick130306/fluxpack.git
 cd fluxpack
 pip install -r requirements.txt
 
