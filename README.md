@@ -279,5 +279,5 @@ MIT License
 ---
 
 <div align="center">
-Made with ⚡ by 章振威
+Made with ⚡ by Patrick
 </div>
