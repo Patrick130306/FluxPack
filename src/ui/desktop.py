@@ -53,42 +53,68 @@ from src.core.omega import (
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
-# ── 自定义科技感配色 ──────────────────────────
+# ── 现代化配色方案 ──────────────────────────
+# 灵感: Linear / Vercel / Stripe 风格
 THEME = {
-    "bg": "#0a0e14",
-    "bg2": "#111822",
-    "bg3": "#1a2332",
-    "border": "#1e2d45",
-    "text": "#e2e8f0",
-    "text2": "#7b8ba3",
-    "accent": "#00d4ff",      # 青色主色调
-    "accent2": "#0099cc",     # 深青
-    "accent3": "#0a2a3a",     # 暗青背景
-    "green": "#00e676",
-    "red": "#ff1744",
-    "yellow": "#ffd740",
-    "orange": "#ff6d00",
-    "purple": "#9c27b0",
-    "radius": 8,
+    "bg": "#0c0e12",          # 更深的主体背景
+    "bg2": "#14171c",         # 面板背景
+    "bg3": "#1c2028",         # 输入框/按钮背景
+    "bg4": "#242830",         # hover 状态
+    "border": "#2a2f38",      # 边框
+    "text": "#e8ecf0",        # 主文字
+    "text2": "#7a8494",       # 次要文字
+    "text3": "#4a5464",       # 禁用文字
+    "accent": "#3b82f6",      # 蓝色主色调 (更像 Tailwind blue-500)
+    "accent2": "#2563eb",     # 深蓝 (blue-600)
+    "accent3": "#1e3a5f",     # 暗蓝背景
+    "green": "#22c55e",       # Tailwind green-500
+    "red": "#ef4444",         # Tailwind red-500
+    "yellow": "#f59e0b",      # Tailwind amber-500
+    "orange": "#f97316",      # Tailwind orange-500
+    "purple": "#a855f7",      # Tailwind purple-500
+    "radius": 10,             # 全局圆角
+    "radius_sm": 6,           # 小圆角
+    "radius_lg": 16,          # 大圆角
+    "radius_xl": 24,          # 超大圆角 (胶囊按钮)
 }
 
-# 覆盖 CTk 默认颜色（格式: [亮色, 暗色]）
-_overrides = {
-    "CTkFrame": {"fg_color": ["#e8ecf0", THEME["bg2"]], "border_color": ["#d0d4d8", THEME["border"]]},
-    "CTkButton": {"fg_color": ["#1a8fbd", THEME["accent2"]], "hover_color": ["#00bce8", THEME["accent"]],
-                  "border_color": ["#1a8fbd", THEME["accent2"]]},
-    "CTkEntry": {"fg_color": ["#ffffff", THEME["bg"]], "border_color": ["#c8ccd0", THEME["border"]]},
-    "CTkTextbox": {"fg_color": ["#f5f6f8", THEME["bg"]]},
-    "CTkProgressBar": {"fg_color": ["#e0e2e6", THEME["bg3"]], "progress_color": ["#1976d2", THEME["accent"]]},
-    "CTkSwitch": {"progress_color": ["#1976d2", THEME["accent"]]},
-    "CTkOptionMenu": {"fg_color": ["#ffffff", THEME["bg3"]], "button_color": ["#e0e2e6", THEME["border"]]},
-}
-for widget, props in _overrides.items():
-    if widget in ctk.ThemeManager.theme:
-        for k, v in props.items():
-            ctk.ThemeManager.theme[widget][k] = v
+# ── 全局 CTk 主题覆盖 ─────────────────────
+ctk.ThemeManager.theme["CTkFrame"]["corner_radius"] = THEME["radius"]
+ctk.ThemeManager.theme["CTkFrame"]["fg_color"] = ["#f0f2f5", THEME["bg2"]]
+ctk.ThemeManager.theme["CTkFrame"]["border_color"] = ["#e2e5ea", THEME["border"]]
 
-APP_TITLE = "FLUXPACK"
+ctk.ThemeManager.theme["CTkButton"]["corner_radius"] = THEME["radius"]
+ctk.ThemeManager.theme["CTkButton"]["fg_color"] = ["#2563eb", THEME["accent2"]]
+ctk.ThemeManager.theme["CTkButton"]["hover_color"] = ["#1d4ed8", THEME["accent"]]
+ctk.ThemeManager.theme["CTkButton"]["text_color"] = ["#ffffff", "#ffffff"]
+ctk.ThemeManager.theme["CTkButton"]["border_width"] = 0
+
+ctk.ThemeManager.theme["CTkEntry"]["corner_radius"] = THEME["radius_sm"]
+ctk.ThemeManager.theme["CTkEntry"]["fg_color"] = ["#ffffff", THEME["bg3"]]
+ctk.ThemeManager.theme["CTkEntry"]["border_color"] = ["#d4d8dd", THEME["border"]]
+ctk.ThemeManager.theme["CTkEntry"]["text_color"] = ["#1a1d23", THEME["text"]]
+ctk.ThemeManager.theme["CTkEntry"]["placeholder_text_color"] = ["#9ca3af", THEME["text2"]]
+
+ctk.ThemeManager.theme["CTkTextbox"]["corner_radius"] = THEME["radius_sm"]
+ctk.ThemeManager.theme["CTkTextbox"]["fg_color"] = ["#f8f9fc", THEME["bg"]]
+ctk.ThemeManager.theme["CTkTextbox"]["text_color"] = ["#1a1d23", THEME["text"]]
+
+ctk.ThemeManager.theme["CTkLabel"]["text_color"] = ["#1a1d23", THEME["text"]]
+
+ctk.ThemeManager.theme["CTkProgressBar"]["corner_radius"] = THEME["radius_xl"]
+ctk.ThemeManager.theme["CTkProgressBar"]["fg_color"] = ["#e8ecf0", THEME["bg3"]]
+ctk.ThemeManager.theme["CTkProgressBar"]["progress_color"] = ["#2563eb", THEME["accent"]]
+ctk.ThemeManager.theme["CTkProgressBar"]["border_width"] = 0
+
+ctk.ThemeManager.theme["CTkSwitch"]["corner_radius"] = THEME["radius_xl"]
+ctk.ThemeManager.theme["CTkSwitch"]["progress_color"] = ["#2563eb", THEME["accent"]]
+
+ctk.ThemeManager.theme["CTkOptionMenu"]["corner_radius"] = THEME["radius_sm"]
+ctk.ThemeManager.theme["CTkOptionMenu"]["fg_color"] = ["#ffffff", THEME["bg3"]]
+ctk.ThemeManager.theme["CTkOptionMenu"]["button_color"] = ["#e8ecf0", THEME["bg4"]]
+ctk.ThemeManager.theme["CTkOptionMenu"]["text_color"] = ["#1a1d23", THEME["text"]]
+
+APP_TITLE = "FluxPack"
 APP_VERSION = "0.2.0"
 WINDOW_SIZE = "1100x720"
 
@@ -157,64 +183,47 @@ class FluxPackApp(ctk.CTk):
         self.grid_columnconfigure(0, weight=1)
 
         # ── 顶栏 ────────────────────────────────────
-        self.topbar = ctk.CTkFrame(self, height=52, corner_radius=0, fg_color="#0d1520")
+        self.topbar = ctk.CTkFrame(self, height=44, corner_radius=0, fg_color=THEME["bg"])
         self.topbar.grid(row=0, column=0, sticky="ew", padx=0, pady=0)
         self.topbar.grid_columnconfigure(0, weight=1)
 
-        # Logo 区
+        # 左侧标志
         logo_frame = ctk.CTkFrame(self.topbar, fg_color="transparent")
-        logo_frame.grid(row=0, column=0, padx=(16, 0), pady=8, sticky="w")
+        logo_frame.grid(row=0, column=0, padx=(14, 0), pady=6, sticky="w")
 
         self.title_label = ctk.CTkLabel(
-            logo_frame,
-            text="⚡",
-            font=ctk.CTkFont(size=22, weight="bold"),
-            anchor="w",
-            text_color=THEME["accent"],
+            logo_frame, text="◆", font=ctk.CTkFont(size=14),
+            text_color=THEME["accent"], anchor="w",
         )
         self.title_label.pack(side="left")
 
         ctk.CTkLabel(
-            logo_frame,
-            text="FLUXPACK",
-            font=ctk.CTkFont(size=16, weight="bold"),
-            anchor="w",
-            text_color="#ffffff",
-        ).pack(side="left", padx=(4, 0))
+            logo_frame, text="FluxPack",
+            font=ctk.CTkFont(size=13, weight="bold"),
+            text_color=THEME["text"], anchor="w",
+        ).pack(side="left", padx=(5, 0))
 
-        ctk.CTkLabel(
-            logo_frame,
-            text=f"v{APP_VERSION}",
-            font=ctk.CTkFont(size=10),
-            anchor="w",
-            text_color=THEME["text2"],
-        ).pack(side="left", padx=(6, 0))
-
-        # 中间状态
+        # 状态指示
         self.status_label = ctk.CTkLabel(
-            self.topbar,
-            text="● 就绪",
-            font=ctk.CTkFont(size=11),
-            anchor="e",
-            text_color=THEME["green"],
+            self.topbar, text="● 就绪",
+            font=ctk.CTkFont(size=10),
+            text_color=THEME["green"], anchor="e",
         )
-        self.status_label.grid(row=0, column=1, padx=12, pady=8, sticky="e")
+        self.status_label.grid(row=0, column=1, padx=10, sticky="e")
 
+        # 暗色/亮色开关
         self.mode_switch = ctk.CTkSwitch(
-            self.topbar,
-            text="",
+            self.topbar, text="", width=28,
             command=self._toggle_theme,
-            onvalue="dark",
-            offvalue="light",
-            width=36,
+            onvalue="dark", offvalue="light",
             progress_color=THEME["accent"],
         )
-        self.mode_switch.grid(row=0, column=2, padx=(0, 16), pady=8, sticky="e")
+        self.mode_switch.grid(row=0, column=2, padx=(0, 14), pady=6, sticky="e")
         self.mode_switch.select()
 
         # ── 标签页 ──────────────────────────────────
         self.tabview = ctk.CTkTabview(self)
-        self.tabview.grid(row=1, column=0, sticky="nsew", padx=8, pady=(0, 8))
+        self.tabview.grid(row=1, column=0, sticky="nsew", padx=0, pady=0)
         self.grid_rowconfigure(1, weight=1)
         self.grid_columnconfigure(0, weight=1)
 
